@@ -13,6 +13,7 @@ export default function BookingForm() {
         name="booking"
         method="POST"
         data-netlify="true"
+        action="/success"
       >
         <input type="hidden" name="form-name" value="booking" />
         <div className="flex flex-col">
