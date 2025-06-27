@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 export default function BookingForm() {
   return (
     <div className="mt-10 flex flex-col items-center bg-gradient-to-r from-white-100 via-purple-200 to-teal-200 ">
