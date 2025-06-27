@@ -1,14 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Baskervville, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from './components/Navbar';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const baskerville = Baskervville({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ['400']
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ['400', '500']
 });
 
 export const metadata = {
@@ -20,9 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${baskerville.variable} ${plexMono.variable} antialiased min-h-screen bg-gradient-to-b from-black via-teal-900 to-teal-200 text-white`}
       >
-        {children}
+        <Navbar />
+        <main className="pt-20 px-8 pb-20 sm:px-20">{children}</main>
       </body>
     </html>
   );
