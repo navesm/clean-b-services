@@ -13,6 +13,7 @@ export default function BookingForm() {
         method="POST"
         data-netlify="true"
         action="/success"
+        encType="application/x-www-form-urlencoded"
       >
         <input type="hidden" name="form-name" value="booking" />
         <div className="flex flex-col">
@@ -117,6 +118,7 @@ export default function BookingForm() {
           Submit
         </button>
       </form>
+
     </div>
   );
 }
