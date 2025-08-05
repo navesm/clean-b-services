@@ -29,21 +29,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <form name="booking" method="POST" netlify="true" netlify-honeypot="bot-field" hidden>
-        <input type="hidden" name="form-name" value="booking" />
-        <input type="text" name="name" />
-        <input type="text" name="address" />
-        <input type="text" name="city" />
-        <input type="tel" name="phone-number" />
-        <input type="text" name="location-size" />
-        <input type="radio" name="intensity" value="deep-cleaning" />
-        <input type="radio" name="intensity" value="maintenance" />
-        <input type="radio" name="frequency" value="one-time" />
-        <input type="radio" name="frequency" value="weekly" />
-        <input type="radio" name="frequency" value="bi-weekly" />
-        <input type="radio" name="frequency" value="monthly" />
-        <textarea name="additional-info"></textarea>
-      </form>
     </div >
   );
 }
