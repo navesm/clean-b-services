@@ -14,8 +14,10 @@ export default function BookingForm() {
         data-netlify="true"
         action="/success"
         encType="application/x-www-form-urlencoded"
+        netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="booking" />
+        <input type="hidden" name="bot-field" />
         <div className="flex flex-col">
           <label className="mb-2">Name</label>
           <input
