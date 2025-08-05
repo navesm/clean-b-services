@@ -12,7 +12,7 @@ export default function BookingForm() {
         name="booking"
         method="POST"
         data-netlify="true"
-        action="/success"
+        action="/?form=booking"
         encType="application/x-www-form-urlencoded"
         netlify-honeypot="bot-field"
       >
