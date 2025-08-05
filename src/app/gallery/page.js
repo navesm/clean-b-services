@@ -3,14 +3,13 @@ import Image from 'next/image';
 export default function Gallery() {
   return (
     <div className="flex flex-col items-center gap-10 mt-20 bg-gradient-to-r from-stone-300 via-purple-100 to-teal-200">
-      <h1 className="text-6xl text-stone-600 drop-shadow-md">
+      <h1 className="text-6xl text-white hover:text-teal-300 drop-shadow-md">
         Gallery
       </h1>
       <Image src="/shower-glass.png" height={400} width={400} alt="Shower glass" />
-      <Image src="/floor-trim.png" height={400} width={400} alt="Floor trim" />
-      <Image src="/clean-tub.png" height={400} width={400} alt="Bath tub" />
-
-      <div clasName="grid grid-cols-2 gap-10 mt-20 ">
+      <div className="grid grid-cols-2 gap-10 mt-20 ">
+        <Image src="/floor-trim.png" height={400} width={400} alt="Floor trim" />
+        <Image src="/clean-tub.png" height={400} width={400} alt="Bath tub" />
         <Image src="/cleanbcleaningservicellc/s1.jpg" height={400} width={400} alt="Before shower glass door" />
         <Image src="/cleanbcleaningservicellc/s2.jpg" height={400} width={400} alt="after shower glass door" />
         <Image src="/cleanbcleaningservicellc/s3.jpg" height={400} width={400} alt="Before toilet corner" />

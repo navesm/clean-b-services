@@ -20,7 +20,7 @@ export default function BookingForm() {
           <label className="mb-2">Name</label>
           <input
             name="name"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
             placeholder="Enter First and Last Name">
           </input>
@@ -29,7 +29,7 @@ export default function BookingForm() {
           <label className="mb-2">Address</label>
           <input
             name="address"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
             placeholder="Enter Entire Street Address">
           </input>
@@ -38,7 +38,7 @@ export default function BookingForm() {
           <label className="mb-2">City</label>
           <input
             name="city"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
             placeholder="Address Line 2">
           </input>
@@ -47,7 +47,7 @@ export default function BookingForm() {
           <label className="mb-2">Phone Number</label>
           <input
             name="phone-number"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="tel"
             placeholder="(123) 456-7890">
           </input>
@@ -56,7 +56,7 @@ export default function BookingForm() {
           <label className="mb-2">Size of Location</label>
           <input
             name="location-size"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
             placeholder="Beds/Baths , Square Footage (if known)">
           </input>
@@ -105,7 +105,7 @@ export default function BookingForm() {
           <label className="mb-2">Additional Information</label>
           <textarea
             name="additional-info"
-            className="px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             rows="4"
             columns="50"
             placeholder="Anything else you think we should know?">
@@ -113,7 +113,7 @@ export default function BookingForm() {
         </div>
         <button
           type="submit"
-          className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded shadow"
+          className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md shadow"
         >
           Submit
         </button>

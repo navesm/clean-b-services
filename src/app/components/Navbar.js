@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-black via-gray-700 to-teal-800 text-white shadow-md">
+    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-black/80 via-gray-700/80 to-teal-800/80 backdrop-blur">
       <nav className="flex justify-between items-center h-20 px-8">
 
         <Link href="/" className="flex items-center">

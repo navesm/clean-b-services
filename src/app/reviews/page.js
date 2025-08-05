@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Reviews() {
   return (
     <div className="flex flex-col items-center bg-gradient-to-r from-stone-300 via-purple-100 to-teal-200">
-      <h1 className="text-6xl text-stone-500 drop-shadow-md">
+      <h1 className="text-6xl text-white hover:text-teal-300 drop-shadow-md">
         Reviews
       </h1>
       <p className=" text-xl text-gray-700 ">See what customers have to say about <strong>Clean B Cleaning Service LLC</strong>!</p>
