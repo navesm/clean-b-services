@@ -1,9 +1,42 @@
-export const dynamic = 'force-static';
+'use client';
+import { useState } from 'react';
+
 
 export default function BookingForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (response.ok) {
+        //Redirect to success page
+        window.location.href = '/success';
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Form submission error: ", error);
+      setSubmitStatus("there was an error submitting the form. Please try again.");
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="mt-10 flex flex-col items-center bg-gradient-to-r from-white-100 via-purple-200 to-teal-200 ">
-      <h1 className="text-5xl font-bold mb-10 text-center text-stone-600 drop-shadow-md">
+      <h1 className="text-5xl font-bold mb-10 text-center text-white hover:text-teal-300 drop-shadow-md">
         Request a Quote
       </h1>
 
@@ -12,9 +45,9 @@ export default function BookingForm() {
         name="booking"
         method="POST"
         data-netlify="true"
-        action="/?form=booking"
         encType="application/x-www-form-urlencoded"
         netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="booking" />
         <input type="hidden" name="bot-field" />
@@ -113,14 +146,22 @@ export default function BookingForm() {
             placeholder="Anything else you think we should know?">
           </textarea>
         </div>
+
+        {submitStatus && (
+          <div className="text-red-400 text-center">{submitStatus}</div>
+        )}
+
         <button
           type="submit"
-          className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md shadow"
+          disabled={isSubmitting}
+          className={`font-bold py-2 px-6 rounded-md shadow transition ${isSubmitting
+            ? 'bg-gray-500 cursor-not-allowed'
+            : 'bg-teal-600 hover:bg-teal-700 text-white'
+            }`}
         >
-          Submit
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </form>
-
     </div>
   );
 }
