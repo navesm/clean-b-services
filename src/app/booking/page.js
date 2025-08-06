@@ -36,7 +36,7 @@ export default function BookingForm() {
 
   return (
     <div className="mt-10 flex flex-col items-center bg-gradient-to-r from-white-100 via-purple-200 to-teal-200 ">
-      <h1 className="text-5xl font-bold mb-10 text-center text-white hover:text-teal-300 drop-shadow-md">
+      <h1 className="text-5xl font-bold mb-10 text-center text-white hover:text-teal-400 drop-shadow-md">
         Request a Quote
       </h1>
 
