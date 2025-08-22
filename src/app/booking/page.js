@@ -1,63 +1,32 @@
-'use client';
-import { useState } from 'react';
-
-
 export default function BookingForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-
-    const formData = new FormData(e.target);
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-      });
-
-      if (response.ok) {
-        //Redirect to success page
-        window.location.href = '/success';
-      } else {
-        throw new Error("Form submission failed");
-      }
-    } catch (error) {
-      console.error("Form submission error: ", error);
-      setSubmitStatus("there was an error submitting the form. Please try again.");
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <div className="mt-10 flex flex-col items-center bg-gradient-to-r from-white-100 via-purple-200 to-teal-200 ">
+    <div className="mt-10 flex flex-col items-center bg-gradient-to-r bg-gradient-to-r from-gray-300 to-teal-200 ">
       <h1 className="text-5xl font-bold mb-10 text-center text-white hover:text-teal-400 drop-shadow-md">
         Request a Quote
       </h1>
 
       <form
         className="w-full max-w-2xl bg-black/30 p-8 rounded-lg shadow-md space-y-6"
-        name="booking"
+        action="https://api.web3forms.com/submit"
         method="POST"
-        data-netlify="true"
-        encType="application/x-www-form-urlencoded"
-        netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}
       >
-        <input type="hidden" name="form-name" value="booking" />
-        <input type="hidden" name="bot-field" />
+        {/*Web3Forms Config */}
+        <input type="hidden" name="access_key" value="a6d325b5-11bf-4f73-b55a-10f3d9738f87" />
+        <input type="hidden" name="subject" value="New Cleaning Service Quote Request" />
+        <input type="hidden" name="redirect" value={`${process.env.NEXT_PUBLIC_SITE_URL}/success`} />
+        <input type="hidden" name="from_name" value="Cleaning Service Website" />
+
+        {/*Honeypot for spam protection (Web3Forms) */}
+        <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
+
         <div className="flex flex-col">
           <label className="mb-2">Name</label>
           <input
             name="name"
             className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
-            placeholder="Enter First and Last Name">
+            placeholder="Enter First and Last Name"
+            required>
           </input>
         </div>
         <div className="flex flex-col">
@@ -66,7 +35,8 @@ export default function BookingForm() {
             name="address"
             className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
-            placeholder="Enter Entire Street Address">
+            placeholder="Enter Entire Street Address"
+            required>
           </input>
         </div>
         <div className="flex flex-col">
@@ -84,7 +54,18 @@ export default function BookingForm() {
             name="phone-number"
             className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="tel"
-            placeholder="(123) 456-7890">
+            placeholder="(123) 456-7890"
+            required>
+          </input>
+        </div>
+        <div className="flex flex-col">
+          <label className="mb-2">Email</label>
+          <input
+            name="email"
+            className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+            type="email"
+            placeholder="your-email@example.com"
+            required>
           </input>
         </div>
         <div className="flex flex-col">
@@ -93,7 +74,8 @@ export default function BookingForm() {
             name="location-size"
             className="px-4 py-2 rounded-lg bg-white text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             type="text"
-            placeholder="Beds/Baths , Square Footage (if known)">
+            placeholder="Beds/Baths , Square Footage (if known)"
+            required>
           </input>
         </div>
         <label><u>Intensity</u></label>
@@ -103,7 +85,8 @@ export default function BookingForm() {
               className="accent-teal-600"
               type="radio"
               name="intensity"
-              value="deep-cleaning">
+              value="deep-cleaning"
+              required>
             </input>
             <span>Deep Cleaning</span>
           </label>
@@ -112,7 +95,8 @@ export default function BookingForm() {
               className="accent-teal-600"
               type="radio"
               name="intensity"
-              value="maintenance">
+              value="maintenance"
+              required>
             </input>
             <span>Maintenance</span>
           </label>
@@ -147,19 +131,11 @@ export default function BookingForm() {
           </textarea>
         </div>
 
-        {submitStatus && (
-          <div className="text-red-400 text-center">{submitStatus}</div>
-        )}
-
         <button
           type="submit"
-          disabled={isSubmitting}
-          className={`font-bold py-2 px-6 rounded-md shadow transition ${isSubmitting
-            ? 'bg-gray-500 cursor-not-allowed'
-            : 'bg-teal-600 hover:bg-teal-700 text-white'
-            }`}
+          className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md shadow transition"
         >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+          Submit
         </button>
       </form>
     </div>
